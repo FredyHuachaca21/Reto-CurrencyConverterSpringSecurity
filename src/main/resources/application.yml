@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:SpringSecurityDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE # Configuración de conexión a la base de datos H2 en memoria.
+    driverClassName: org.h2.Driver # Driver JDBC para H2.
+    username: sa # Nombre de usuario para la base de datos.
+    password: 123 # Contraseña para la base de datos.
+  h2:
+    console:
+      enabled: true # Habilita la consola H2 para acceder a la base de datos a través del navegador.
+      path: /h2-console # Ruta de acceso a la consola H2.
+  jpa:
+    hibernate:
+      #ddl-auto: update # Estrategia para la creación y actualización de esquemas de base de datos.
+      ddl-auto: create-drop # Estrategia para la creación y eliminación de esquemas de base de datos.
+    show-sql: true # Muestra las consultas SQL en la consola.
+    database-platform: org.hibernate.dialect.H2Dialect # Dialecto específico de la base de datos para Hibernate.
+
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970 # Clave secreta para firmar los tokens JWT.
+      expiration: 86400000 # Tiempo de expiración del token JWT en milisegundos (1 día).
+      refresh-token:
+        expiration: 604800000 # Tiempo de expiración del token de actualización en milisegundos (7 días).
+
+error:
+  documentation:
+    baseUrl: http://localhost:9090/api/v1
+server.id: server1
+
+server:
+  port: 9090 # Puerto en el que se ejecutará el servidor.
